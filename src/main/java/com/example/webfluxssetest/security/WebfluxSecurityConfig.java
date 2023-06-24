@@ -22,6 +22,8 @@ public class WebfluxSecurityConfig {
     public SecurityWebFilterChain configure(ServerHttpSecurity http) {
         return http.authorizeExchange(getAuthorizeExchangeSpecCustomizer())
                 .addFilterAfter(webfluxAuthFilter,   SecurityWebFiltersOrder.AUTHORIZATION)
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
+                .cors(ServerHttpSecurity.CorsSpec::disable)
                 .build();
 
     }
